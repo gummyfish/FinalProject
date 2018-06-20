@@ -1,0 +1,42 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    configuration = [
+            applicationId: "org.sinisterstuf.guesstheanimal",
+            compileSdkVersion: 25,
+            minSdkVersion: 9,
+            targetSdkVersion: 25,
+            versionCodeMajor: 0,
+            versionCodeMinor: 0,
+            versionCodePatch: 3
+    ]
+
+    // Support
+    supportLibraryVersion = "25.3.1"
+
+    // UI
+    butterKnifeVersion = "8.5.1"
+}
+
+def computeVersionCode() {
+    return configuration.versionCodeMajor * 100 + configuration.versionCodeMinor * 10 + configuration.versionCodePatch
+}
+
+def computeVersionName() {
+    return "$configuration.versionCodeMajor.$configuration.versionCodeMinor.$configuration.versionCodePatch"
+}
